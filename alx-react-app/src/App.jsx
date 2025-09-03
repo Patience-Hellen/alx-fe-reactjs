@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 import reactLogo from './assets/react.svg';
+import Footer from './components/Footer';
+import MainContent from './components/MainContent';
 import WelcomeMessage from './components/WelcomeMessage';
 import viteLogo from '/vite.svg';
 
@@ -11,6 +13,15 @@ function App() {
     <>
       <div>
         <WelcomeMessage />
+      </div>
+      <div>
+        <Header />
+      </div>
+      <div>
+        <MainContent />
+      </div>
+      <div>
+        <Footer />
       </div>
       <div>
         <a href="https://vite.dev" target="_blank">
