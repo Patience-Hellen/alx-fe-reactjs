@@ -25,6 +25,10 @@ function App() {
         <Footer />
       </div>
       <div>
+        <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
+        <UserProfile name="John" age="30" bio="Loves Food" />
+      </div>
+      <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
