@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import reactLogo from './assets/react.svg';
+import Counter from './components/Counter';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
@@ -21,6 +22,9 @@ function App() {
       </div>
       <div>
         <MainContent />
+      </div>
+      <div>
+        <Counter />
       </div>
       <div>
         <Footer />
