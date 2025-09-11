@@ -1,43 +1,32 @@
-import { useState } from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
-import reactLogo from './assets/react.svg';
 import AddRecipeForm from './components/AddRecipeForm';
+import RecipeDetails from './components/RecipeDetails';
 import RecipeList from './components/RecipeList';
-import viteLogo from '/vite.svg';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    <div>
-      < RecipeList />
-    </div>
-    <div>
-      <AddRecipeForm />
-    </div>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Routes>
+        {/* Home page shows all recipes */}
+        <Route path="/" element={<RecipeList />} />
+
+        {/* Add new recipe page */}
+        <Route path="/add" element={<AddRecipeForm />} />
+
+        {/* Recipe details (dynamic id) */}
+        <Route path="/recipes/:id" element={<RecipeDetailsWrapper />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+// Wrapper to use useParams for recipeId
+import { useParams } from 'react-router-dom';
+
+const RecipeDetailsWrapper = () => {
+  const { id } = useParams();
+  return <RecipeDetails recipeId={parseInt(id)} />;
+};
+
+export default App;
