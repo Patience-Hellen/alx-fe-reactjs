@@ -1,30 +1,41 @@
+// src/components/recipeStore.js
 import create from 'zustand';
 
 const useRecipeStore = create((set) => ({
-    recipes: [],
+  recipes: [],
 
-  // Add a recipe
-    addRecipe: (newRecipe) =>
+  // --- SEARCH & FILTER ---
+  searchTerm: '',
+  filteredRecipes: [],
+
+  setSearchTerm: (term) => set({ searchTerm: term }),
+
+  filterRecipes: () =>
     set((state) => ({
-        recipes: [...state.recipes, newRecipe],
+      filteredRecipes: state.recipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
+      ),
     })),
 
-  // Delete a recipe by id
-    deleteRecipe: (id) =>
+  // --- CRUD ---
+  addRecipe: (newRecipe) =>
     set((state) => ({
-        recipes: state.recipes.filter((recipe) => recipe.id !== id),
+      recipes: [...state.recipes, newRecipe],
     })),
 
-  // Update a recipe by id
-    updateRecipe: (id, updatedData) =>
+  deleteRecipe: (id) =>
     set((state) => ({
-        recipes: state.recipes.map((recipe) =>
+      recipes: state.recipes.filter((recipe) => recipe.id !== id),
+    })),
+
+  updateRecipe: (id, updatedData) =>
+    set((state) => ({
+      recipes: state.recipes.map((recipe) =>
         recipe.id === id ? { ...recipe, ...updatedData } : recipe
-        ),
+      ),
     })),
 
-  // Replace all recipes at once
-    setRecipes: (recipes) => set({ recipes }),
+  setRecipes: (recipes) => set({ recipes }),
 }));
 
 export default useRecipeStore;
