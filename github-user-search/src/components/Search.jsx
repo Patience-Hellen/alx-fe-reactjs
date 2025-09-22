@@ -21,7 +21,7 @@ const Search = () => {
     try {
         const { items, total_count } = await fetchUserData(username, location, minRepos, 1);
         if (items.length === 0) {
-        setError("Looks like we cant find any users");
+        setError("Looks like we cant find any user");
         } else {
         setUsers(items);
         setHasMore(items.length < total_count);
