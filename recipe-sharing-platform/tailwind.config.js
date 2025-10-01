@@ -1,8 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./public/index.html",   // for CRA-style setups
+    "./index.html",          // for Vite setups
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {},
