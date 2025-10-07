@@ -9,7 +9,7 @@ function RegistrationForm () {
         
     });
 
-    const [errors, setErros] = useState ("")
+    const [errors, setErrors] = useState("")
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -39,10 +39,7 @@ function RegistrationForm () {
             onSubmit={handleSubmit}
             className="bg-white p-6 rounded-lg shadow-md w-full max-w-md"
             >
-                <h2 className="min-h-screen flex items-center justify-center bg-gray-100"
-                >
-                    User Registration
-                </h2>
+                <h2 className="text-2xl font-semibold mb-4 text-center">User Registration</h2>
 
                 {errors && <p className="text-red-500 text-sm mb-3">{errors}</p>}
 
@@ -50,7 +47,7 @@ function RegistrationForm () {
                 <input
                 type="text"
                 name="username"
-                value={formData.username}
+                value={username}
                 onChange={handleChange}
                 className="w-full p-2 border border-gray-300 rounded mb-4"
                 />
@@ -59,7 +56,7 @@ function RegistrationForm () {
                 <input
                 type="email"
                 name="email"
-                value={formData.email}
+                value={email}
                 onChange={handleChange}
                 className="w-full p-2 border border-gray-300 rounded mb-4"
                 />
@@ -68,7 +65,7 @@ function RegistrationForm () {
                 <input
                 type="password"
                 name="password"
-                value={formData.password}
+                value={password}
                 onChange={handleChange}
                 className="w-full p-2 border border-gray-300 rounded mb-4"
                 />
