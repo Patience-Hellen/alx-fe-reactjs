@@ -1,27 +1,19 @@
 // src/App.jsx
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-
-function Home() {
-  return <h2>Home Page</h2>;
-}
-
-function About() {
-  return <h2>About Page</h2>;
-}
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import BlogPost from "./components/BlogPost";
+import Home from "./components/Home";
+import Profile from "./components/Profile";
 
 function App() {
   return (
-    <BrowserRouter>
-      <nav style={{ marginBottom: "20px" }}>
-        <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
-        <Link to="/about">About</Link>
-      </nav>
-
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/profile/*" element={<Profile />} />
+        {/* Dynamic route for blog posts */}
+        <Route path="/blog/:id" element={<BlogPost />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
