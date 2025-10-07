@@ -1,22 +1,28 @@
-import ProtectedRoute from "./components/ProtectedRoute";
+// src/App.jsx
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
-const isAuthenticated = false; // change to true to simulate login
+function Home() {
+  return <h2>Home Page</h2>;
+}
 
-<Routes>
-  <Route path="/" element={<Home />} />
-  <Route path="/about" element={<About />} />
+function About() {
+  return <h2>About Page</h2>;
+}
 
-  <Route
-    path="/profile"
-    element={
-      <ProtectedRoute isAuthenticated={isAuthenticated}>
-        <Profile />
-      </ProtectedRoute>
-    }
-  >
-    <Route path="details" element={<ProfileDetails />} />
-    <Route path="settings" element={<ProfileSettings />} />
-  </Route>
+function App() {
+  return (
+    <BrowserRouter>
+      <nav style={{ marginBottom: "20px" }}>
+        <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
+        <Link to="/about">About</Link>
+      </nav>
 
-  <Route path="/blog/:id" element={<BlogPost />} />
-</Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
