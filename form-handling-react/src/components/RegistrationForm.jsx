@@ -22,7 +22,7 @@ function RegistrationForm () {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if( !formData.username || !formData.email || !formData.password){
+        if( !username || !email || !password){
             setErrors("All fields are required.");
         return;
         }
