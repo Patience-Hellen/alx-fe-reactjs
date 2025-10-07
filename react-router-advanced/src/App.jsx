@@ -10,7 +10,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile/*" element={<Profile />} />
-        {/* Dynamic route for blog posts */}
         <Route path="/blog/:id" element={<BlogPost />} />
       </Routes>
     </Router>
