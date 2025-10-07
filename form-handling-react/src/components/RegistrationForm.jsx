@@ -22,16 +22,29 @@ function RegistrationForm () {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if( !username || !email || !password){
-            setErrors("All fields are required.");
-        return;
+        const { username, email, password } = formData;
+
+        if (!username) {
+            setErrors("Username is required.");
+            return;
         }
 
-        setErrors("");
-        console.log("User Registered Successfully:", formData);
+    if (!email) {
+        setErrors("Email is required.");
+        return;
+    }
 
-        setFormData({username:"", email: "", password: ""})
-    };
+    if (!password) {
+        setErrors("Password is required.");
+        return;
+    }
+
+    setErrors("");
+    console.log("User Registered Successfully:", formData);
+
+    setFormData({ username: "", email: "", password: "" });
+};
+
 
     return (
         <div>
