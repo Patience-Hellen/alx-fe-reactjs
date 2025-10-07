@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-// Step 1: Create a function to fetch posts
+// Fetch function
 const fetchPosts = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts');
   if (!response.ok) {
@@ -9,15 +9,15 @@ const fetchPosts = async () => {
   return response.json();
 };
 
-// Step 2: Use useQuery to fetch data
 function PostsComponent() {
-  const { data, error, isLoading, refetch } = useQuery({
+  // Include isError (required)
+  const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ['posts'],
     queryFn: fetchPosts,
   });
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (isError) return <p>Error: {error.message}</p>;
 
   return (
     <div>
